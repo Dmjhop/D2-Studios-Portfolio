@@ -1,12 +1,13 @@
-import Bounded from "@/components/Bounded"
-import Heading from "@/components/Heading"
-import { Content } from "@prismicio/client"
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react"
+import Bounded from "@/components/Bounded";
+import Heading from "@/components/Heading";
+import { Content } from "@prismicio/client";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import Button from "@/components/Button";
 
 /**
  * Props for `Experience`.
  */
-export type ExperienceProps = SliceComponentProps<Content.ExperienceSlice>
+export type ExperienceProps = SliceComponentProps<Content.ExperienceSlice>;
 
 /**
  * Component for "Experience" Slices.
@@ -15,7 +16,8 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
   return (
     <Bounded
       data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}>
+      data-slice-variation={slice.variation}
+    >
       <Heading as="h2" size="lg">
         {slice.primary.heading}
       </Heading>
@@ -28,15 +30,19 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
           <div className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-slate-400">
             <span>{item.time_period}</span>{" "}
             <span className="text-3xl font-extralight">/</span>{" "}
-            <span>{item.institution}</span>
+            <span className="text-[#eb475a]">{item.institution}</span>
           </div>
           <div className="prose prose-lg prose-invert mt-4">
             <PrismicRichText field={item.description} />
           </div>
+          <Button
+            linkField={item.button_link}
+            label={item.button_text}
+          ></Button>
         </div>
       ))}
     </Bounded>
-  )
-}
+  );
+};
 
-export default Experience
+export default Experience;

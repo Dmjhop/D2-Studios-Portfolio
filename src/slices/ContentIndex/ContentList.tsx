@@ -95,7 +95,7 @@ function ContentList({
 
     return asImageSrc(image, {
       fit: "crop",
-      w: 220,
+      w: 520,
       h: 320,
       exp: -10,
     });
@@ -143,7 +143,7 @@ function ContentList({
                     <span className="text-3xl font-bold">
                       {item.data.title}
                     </span>
-                    <div className="flex gap-3 text-lg font-bold text-yellow-400">
+                    <div className="flex gap-3 text-lg font-bold text-[#eb475a]">
                       {item.tags.map((tag, index) => (
                         <span key={index}>{tag}</span>
                       ))}
@@ -162,7 +162,7 @@ function ContentList({
       {/* Hover Element */}
 
       <div
-        className="hover-reveal bg-over pointer-events-none absolute left-0 top-0 -z-10 h-[320px] w-[220px] rounded-lg bg-center opacity-0 transition-[background] duration-300"
+        className="hover-reveal bg-over pointer-events-none absolute left-0 top-0 -z-10 h-[320px] w-[520px] rounded-lg bg-center opacity-0 transition-[background] duration-300"
         style={{
           backgroundImage:
             currentItem !== null ? `url(${contentImages[currentItem]})` : "",
