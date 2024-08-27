@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogPostDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
+type BlogPostDocumentDataSlicesSlice =
+  | BeforeAfterImageBlockSlice
+  | ImageBlockSlice
+  | TextBlockSlice;
 
 /**
  * Content for Blog Post documents
@@ -168,6 +171,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | BeforeAfterImageBlockSlice
   | ExperienceSlice
   | ContentIndexSlice
   | TechListSlice
@@ -232,7 +236,10 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
+type ProjectDocumentDataSlicesSlice =
+  | BeforeAfterImageBlockSlice
+  | ImageBlockSlice
+  | TextBlockSlice;
 
 /**
  * Content for Project documents
@@ -490,6 +497,61 @@ export type AllDocumentTypes =
   | PageDocument
   | ProjectDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *BeforeAfterImageBlock → Default → Primary*
+ */
+export interface BeforeAfterImageBlockSliceDefaultPrimary {
+  /**
+   * Before Image field in *BeforeAfterImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: before_after_image_block.default.primary.before_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  before_image: prismic.ImageField<never>;
+
+  /**
+   * After Image field in *BeforeAfterImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: before_after_image_block.default.primary.after_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  after_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for BeforeAfterImageBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BeforeAfterImageBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BeforeAfterImageBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BeforeAfterImageBlock*
+ */
+type BeforeAfterImageBlockSliceVariation = BeforeAfterImageBlockSliceDefault;
+
+/**
+ * BeforeAfterImageBlock Shared Slice
+ *
+ * - **API ID**: `before_after_image_block`
+ * - **Description**: BeforeAfterImageBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BeforeAfterImageBlockSlice = prismic.SharedSlice<
+  "before_after_image_block",
+  BeforeAfterImageBlockSliceVariation
+>;
 
 /**
  * Primary content in *Biography → Default → Primary*
@@ -1043,6 +1105,10 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavItemItem,
       AllDocumentTypes,
+      BeforeAfterImageBlockSlice,
+      BeforeAfterImageBlockSliceDefaultPrimary,
+      BeforeAfterImageBlockSliceVariation,
+      BeforeAfterImageBlockSliceDefault,
       BiographySlice,
       BiographySliceDefaultPrimary,
       BiographySliceVariation,

@@ -1,0 +1,35 @@
+{
+  "id": "before_after_image_block",
+  "type": "SharedSlice",
+  "name": "BeforeAfterImageBlock",
+  "description": "BeforeAfterImageBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "before_image": {
+          "type": "Image",
+          "config": {
+            "label": "Before Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "after_image": {
+          "type": "Image",
+          "config": {
+            "label": "After Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
