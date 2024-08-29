@@ -33,5 +33,31 @@
   "orientation": "portrait",
   "scope": "/",
   "start_url": "https://d2studios.tech/",
+  "shortcuts": [
+    {
+      "name": "About David",
+      "url": "https://d2studios.tech/about",
+      "description": "A description of the functionality of this shortcut",
+      "icons": [
+        { "src": "icon-96x96.png", "type": "image/png", "sizes": "96x96" }
+      ]
+    },
+    {
+      "name": "D2's Projects",
+      "url": "https://d2studios.tech/projects",
+      "description": "A description of the functionality of this shortcut",
+      "icons": [
+        { "src": "icon-96x96.png", "type": "image/png", "sizes": "96x96" }
+      ]
+    },
+    {
+      "name": "D2's Blog",
+      "url": "https://d2studios.tech/blog",
+      "description": "A description of the functionality of this shortcut",
+      "icons": [
+        { "src": "icon-96x96.png", "type": "image/png", "sizes": "96x96" }
+      ]
+    }
+  ],
   "description": "Main Portfolio Website of David Hopkins II"
 }
