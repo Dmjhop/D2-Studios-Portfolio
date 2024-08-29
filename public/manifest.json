@@ -32,7 +32,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
-  "start_url": "https://d2studios.tech/",
+  "start_url": "https://d2studios.tech",
   "shortcuts": [
     {
       "name": "About David",
