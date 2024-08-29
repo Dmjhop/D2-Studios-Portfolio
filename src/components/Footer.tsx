@@ -10,9 +10,63 @@ import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa6";
 export default async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
+  function convertToRoman(num: number) {
+    const romanNumerals = [
+      { value: 1000, numeral: "M" },
+      { value: 900, numeral: "CM" },
+      { value: 500, numeral: "D" },
+      { value: 400, numeral: "CD" },
+      { value: 100, numeral: "C" },
+      { value: 90, numeral: "XC" },
+      { value: 50, numeral: "L" },
+      { value: 40, numeral: "XL" },
+      { value: 10, numeral: "X" },
+      { value: 9, numeral: "IX" },
+      { value: 5, numeral: "V" },
+      { value: 4, numeral: "IV" },
+      { value: 1, numeral: "I" },
+    ];
+
+    let result = "";
+    for (const { value, numeral } of romanNumerals) {
+      while (num >= value) {
+        result += numeral;
+        num -= value;
+      }
+    }
+    return result;
+  }
+
+  const currentYear = new Date().getFullYear();
+  const romanYear = convertToRoman(currentYear);
+
   return (
     <Bounded as="footer" className="text-slate-600">
-      <div className="container mx-auto mt-20 flex flex-col items-center justify-between gap-6 py-8 sm:flex-row">
+      <p className="-mt-15 -py-5 flex flex-row items-center justify-center gap-6 space-x-2 pb-8 sm:flex-row">
+        Made in{" "}
+        <Link
+          className="text-slate-100 transition-colors duration-150 hover:text-[#eb475a]"
+          href="https://code.visualstudio.com/"
+        >
+          VS Code
+        </Link>{" "}
+        using
+        <Link
+          className="text-slate-100 transition-colors duration-150 hover:text-[#eb475a]"
+          href="https://nextjs.org/"
+        >
+          Next.JS
+        </Link>
+        |
+        <Link
+          className="text-slate-100 transition-colors duration-150 hover:text-[#eb475a]"
+          href="https://code.visualstudio.com/"
+        >
+          Prismic
+        </Link>
+        and some level of 🧠 power
+      </p>
+      <div className="container mx-auto mt-10 flex flex-col items-center justify-between gap-6 pb-8 sm:flex-row">
         <div className="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start">
           <Link
             href="/"
@@ -27,7 +81,7 @@ export default async function Footer() {
             /
           </span>
           <p className="text-sm text-slate-300">
-            © {new Date().getFullYear()} {settings.data.name}
+            © {romanYear} {settings.data.name}
           </p>
         </div>
         <nav className="navigation" aria-label="Footer Navigation">
