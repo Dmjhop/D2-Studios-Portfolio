@@ -3,6 +3,7 @@ import Heading from "@/components/Heading";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Button from "@/components/Button";
+import { PrismicNextLink } from "@prismicio/next";
 
 /**
  * Props for `Experience`.
@@ -35,10 +36,9 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
           <div className="prose prose-lg prose-invert mt-4">
             <PrismicRichText field={item.description} />
           </div>
-          <Button
-            linkField={item.button_link}
-            label={item.button_text}
-          ></Button>
+          <PrismicNextLink field={item.button_link}>
+            <>{item.button_text}</>
+          </PrismicNextLink>
         </div>
       ))}
     </Bounded>
