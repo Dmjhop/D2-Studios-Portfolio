@@ -17,8 +17,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: settings.data.meta_title,
     description: settings.data.meta_description,
-    manifest: "@/public/manifest.json",
-    icons: { apple: "@/public/apple-icon-180.png" },
+    manifest: "/manifest.json",
+    icons: { apple: "/apple-icon-180.png" },
   };
 }
 
