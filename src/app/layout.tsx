@@ -20,9 +20,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description: settings.data.meta_description,
     manifest: "/manifest.json",
     keywords: ["d2 studios", "web developer", "church technology"],
-    themeColor: [{ color: "#fff" }],
-    viewport:
-      "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
+    // themeColor: [{ color: "#fff" }],
+    // viewport:
+    //   "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
   };
 }
 
