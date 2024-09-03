@@ -105,7 +105,10 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice =
+  | TextBlockSlice
+  | BiographySlice
+  | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -171,6 +174,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | TextBlockSlice
   | BeforeAfterImageBlockSlice
   | ExperienceSlice
   | ContentIndexSlice

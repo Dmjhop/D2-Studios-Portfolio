@@ -41,31 +41,33 @@ export default async function Footer() {
   const romanYear = convertToRoman(currentYear);
 
   return (
-    <Bounded as="footer" className="text-slate-600">
-      <p className="-mt-15 -py-5 flex flex-row items-center justify-center gap-6 space-x-2 pb-8 sm:flex-row">
-        Made in{" "}
-        <Link
-          className="text-slate-100 transition-colors duration-150 hover:text-[#eb475a]"
-          href="https://code.visualstudio.com/"
-        >
-          VS Code
-        </Link>{" "}
-        using
-        <Link
-          className="text-slate-100 transition-colors duration-150 hover:text-[#eb475a]"
-          href="https://nextjs.org/"
-        >
-          Next.JS
-        </Link>
-        |
-        <Link
-          className="text-slate-100 transition-colors duration-150 hover:text-[#eb475a]"
-          href="https://code.visualstudio.com/"
-        >
-          Prismic
-        </Link>
-        and some level of 🧠 power
-      </p>
+    <Bounded as="footer" className="text-slate-400">
+      <div className="flex items-center justify-center">
+        <p className="-mt-15 -py-5 inline gap-6 space-x-2 pb-8 text-center sm:flex-row">
+          Made in{" "}
+          <Link
+            className="text-slate-100 transition-colors duration-150 hover:text-[#eb475a]"
+            href="https://code.visualstudio.com/"
+          >
+            VS Code
+          </Link>{" "}
+          using
+          <Link
+            className="text-slate-100 transition-colors duration-150 hover:text-[#eb475a]"
+            href="https://nextjs.org/"
+          >
+            Next.JS{" "}
+          </Link>{" "}
+          &
+          <Link
+            className="text-slate-100 transition-colors duration-150 hover:text-[#eb475a]"
+            href="https://code.visualstudio.com/"
+          >
+            Prismic{" "}
+          </Link>
+          and some level of 🧠 power
+        </p>
+      </div>
       <div className="container mx-auto mt-10 flex flex-col items-center justify-between gap-6 pb-8 sm:flex-row">
         <div className="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start">
           <Link
