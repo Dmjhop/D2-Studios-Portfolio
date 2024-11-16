@@ -1,7 +1,6 @@
 # D2 Studios Portfolio Page
 I wanted to create a page that expressed my personality while also pushing myself to learn
 <a href="https://d2studios.tech" rel="nofollow"><img src="https://ik.imagekit.io/kingswaychurch/Screenshot%202024-11-16%20004748.png?updatedAt=1731736081012" style="max-width: 100%;"></a>
-![D2 Studios Website](https://github.com/user-attachments/assets/0aee8920-b25a-4039-9058-5b9d38d01c09)
 
 
 ## Tech Stack
