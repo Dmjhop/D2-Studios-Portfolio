@@ -8,6 +8,7 @@ import { PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
         <div className="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
       </body>
       <PrismicPreview repositoryName={repositoryName} />
+      <GoogleAnalytics gaId="G-3BTHJQ6YWW" />
     </html>
   );
 }
