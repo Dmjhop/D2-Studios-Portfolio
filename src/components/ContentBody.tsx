@@ -28,7 +28,7 @@ export default function ContentBody({
   }
 
   const formattedDate = formatDate(page.data.date);
-  // Content Body UI
+  // Content Body
   return (
     <Bounded as="article">
       <div className="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:py-20">
