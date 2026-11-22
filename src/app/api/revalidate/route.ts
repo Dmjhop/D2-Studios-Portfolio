@@ -2,31 +2,46 @@ import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 
 export async function POST(request: Request) {
-  const body = await request.json();
+  try {
+    const body = await request.json();
 
-  // Verify the request came from our configured Prismic webhook
-  if (
-    !process.env.PRISMIC_WEBHOOK_SECRET ||
-    body.secret !== process.env.PRISMIC_WEBHOOK_SECRET
-  ) {
+    // Verify Prismic webhook secret
+    if (
+      !process.env.PRISMIC_WEBHOOK_SECRET ||
+      body.secret !== process.env.PRISMIC_WEBHOOK_SECRET
+    ) {
+      return NextResponse.json(
+        { message: "Invalid webhook secret" },
+        { status: 401 },
+      );
+    }
+
+    // Handle Prismic's connection test
+    if (body.type === "test-trigger") {
+      return NextResponse.json({
+        success: true,
+        message: "Prismic webhook connection successful",
+      });
+    }
+
+    // Handle actual content updates
+    if (body.type === "api-update") {
+      revalidateTag("prismic");
+
+      return NextResponse.json({
+        revalidated: true,
+        now: Date.now(),
+      });
+    }
+
     return NextResponse.json(
-      { message: "Invalid webhook secret" },
-      { status: 401 },
+      { message: "Unknown webhook event" },
+      { status: 400 },
     );
-  }
-
-  if (body.type !== "api-update") {
+  } catch {
     return NextResponse.json(
-      { message: "Invalid webhook event" },
+      { message: "Invalid webhook payload" },
       { status: 400 },
     );
   }
-
-  // Invalidate cached Prismic content
-  revalidateTag("prismic");
-
-  return NextResponse.json({
-    revalidated: true,
-    now: Date.now(),
-  });
 }
